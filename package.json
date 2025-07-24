@@ -8,7 +8,6 @@
     "unity" : "2022.3",
     "description" : "Support to setup Rotation Constraint for Prosthetic Arm.",
     "vpmDependencies" : {
-        "nadena.dev.ndmf": ">=1.6.0",
     },
     "legacyFolders" : {
       "": ""
