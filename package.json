@@ -8,7 +8,8 @@
     "unity" : "2022.3",
     "description" : "Support to setup Rotation Constraint for Prosthetic Arm.",
     "vpmDependencies" : {
-		"nadena.dev.ndmf": "^1.5.0"
+		"nadena.dev.ndmf": "1.5.0"
+		"com.vrchat.avatars": "3.8.0"
     },
     "legacyFolders" : {
       "": ""

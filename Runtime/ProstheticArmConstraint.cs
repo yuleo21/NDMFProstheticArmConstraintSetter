@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace _21tools.Runtime
+namespace net.yuleo21.prostheticarmconstraint.Runtime
 {
     [AddComponentMenu("21tools/Prosthetic Arm Constraint")]
     public class ProstheticArmConstraint : MonoBehaviour

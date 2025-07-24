@@ -2,12 +2,12 @@ using nadena.dev.ndmf;
 using UnityEngine;
 using UnityEngine.Animations;
 using VRC.SDK3.Avatars.Components;
-using _21tools.Runtime;
+using net.yuleo21.prostheticarmconstraint.Runtime;
 using System.Collections.Generic;
 
-[assembly: ExportsPlugin(typeof(_21tools.Editor.NDMF.RotationConstraintPlugin))]
+[assembly: ExportsPlugin(typeof(net.yuleo21.prostheticarmconstraint.Editor.NDMF.RotationConstraintPlugin))]
 
-namespace _21tools.Editor.NDMF
+namespace net.yuleo21.prostheticarmconstraint.Editor.NDMF
 {
     public class RotationConstraintPlugin : Plugin<RotationConstraintPlugin>
     {

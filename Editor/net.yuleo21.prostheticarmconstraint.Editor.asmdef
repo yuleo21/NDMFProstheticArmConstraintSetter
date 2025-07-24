@@ -1,7 +1,12 @@
 {
     "name": "net.yuleo21.prostheticarmconstraint.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+		"UnityEditor",
+		"nadena.dev.ndmf",
+		"net.yuleo21.prostheticarmconstraint.Runtime",
+		"VRC.SDK3.Avatars.Components"
+	],
     "includePlatforms": [
         "Editor"
     ],

@@ -1,7 +1,9 @@
 {
     "name": "net.yuleo21.prostheticarmconstraint.Runtime",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+		"UnityEngine",
+		],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
