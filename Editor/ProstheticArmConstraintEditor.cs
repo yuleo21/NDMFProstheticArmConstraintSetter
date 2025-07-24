@@ -4,7 +4,7 @@ using net.yuleo21.prostheticarmconstraint.Runtime;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace _21tools.Editor
+namespace net.yuleo21.prostheticarmconstraint.Editor
 {
     [CustomEditor(typeof(ProstheticArmConstraint))]
     public class ProstheticArmConstraintEditor : UnityEditor.Editor
