@@ -2,9 +2,7 @@
     "name": "net.yuleo21.prostheticarmconstraint.Runtime",
     "rootNamespace": "",
     "references": [],
-    "includePlatforms": [
-        "Runtime"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
