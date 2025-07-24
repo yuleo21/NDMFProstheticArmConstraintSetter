@@ -1,13 +1,13 @@
 using UnityEditor;
 using UnityEngine;
-using net.yuleo21.prostheticarmconstraint.Runtime;
+using net.yuleo21.ndmfprostheticarmconstraintsetter.Runtime;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace net.yuleo21.prostheticarmconstraint.Editor
+namespace net.yuleo21.ndmfprostheticarmconstraintsetter.Editor
 {
-    [CustomEditor(typeof(ProstheticArmConstraint))]
-    public class ProstheticArmConstraintEditor : UnityEditor.Editor
+    [CustomEditor(typeof(NDMFProstheticArmConstraintSetter))]
+    public class NDMFProstheticArmConstraintSetterEditor : UnityEditor.Editor
     {
         private SerializedProperty boneMappingsProp;
 
@@ -22,7 +22,7 @@ namespace net.yuleo21.prostheticarmconstraint.Editor
 
             DrawPropertiesExcluding(serializedObject, "m_Script", "BoneMappings");
 
-            ProstheticArmConstraint myTarget = (ProstheticArmConstraint)target;
+            NDMFProstheticArmConstraintSetter myTarget = (NDMFProstheticArmConstraintSetter)target;
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Humanoid Bone Mapping Information", EditorStyles.boldLabel);
@@ -87,7 +87,7 @@ namespace net.yuleo21.prostheticarmconstraint.Editor
         }
 
         // 義手ボーンをアバターにマッピング
-        private void AutoMapBones(ProstheticArmConstraint component, GameObject avatarRoot)
+        private void AutoMapBones(NDMFProstheticArmConstraintSetter component, GameObject avatarRoot)
         {
             Animator animator = avatarRoot.GetComponent<Animator>();
             if (animator == null || animator.avatar == null || !animator.avatar.isHuman)
@@ -128,7 +128,7 @@ namespace net.yuleo21.prostheticarmconstraint.Editor
                     
                     if (humanoidBoneType != HumanBodyBones.LastBone)
                     {
-                        ProstheticArmConstraint.BoneMapping mapping = new ProstheticArmConstraint.BoneMapping();
+                        NDMFProstheticArmConstraintSetter.BoneMapping mapping = new NDMFProstheticArmConstraintSetter.BoneMapping();
                         mapping.ProstheticBone = prostheticBone;
                         mapping.AvatarBoneType = humanoidBoneType;
 						// 回転差分をオフセットとして計算

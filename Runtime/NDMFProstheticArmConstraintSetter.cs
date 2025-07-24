@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace net.yuleo21.prostheticarmconstraint.Runtime
+namespace net.yuleo21.ndmfprostheticarmconstraintsetter.Runtime
 {
-    [AddComponentMenu("21tools/Prosthetic Arm Constraint")]
-    public class ProstheticArmConstraint : MonoBehaviour
+    [AddComponentMenu("21tools/NDMF Prosthetic Arm Constraint Setter")]
+    public class NDMFProstheticArmConstraintSetter : MonoBehaviour
     {
         public GameObject ProstheticArmRoot;
         public HumanBodyBones AvatarSourceRootBone = HumanBodyBones.Chest;

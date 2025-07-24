@@ -2,12 +2,12 @@ using nadena.dev.ndmf;
 using UnityEngine;
 using UnityEngine.Animations;
 using VRC.SDK3.Avatars.Components;
-using net.yuleo21.prostheticarmconstraint.Runtime;
+using net.yuleo21.ndmfprostheticarmconstraintsetter.Runtime;
 using System.Collections.Generic;
 
-[assembly: ExportsPlugin(typeof(net.yuleo21.prostheticarmconstraint.Editor.NDMF.RotationConstraintPlugin))]
+[assembly: ExportsPlugin(typeof(net.yuleo21.ndmfprostheticarmconstraintsetter.Editor.NDMF.RotationConstraintPlugin))]
 
-namespace net.yuleo21.prostheticarmconstraint.Editor.NDMF
+namespace net.yuleo21.ndmfprostheticarmconstraintsetter.Editor.NDMF
 {
     public class RotationConstraintPlugin : Plugin<RotationConstraintPlugin>
     {
@@ -28,24 +28,24 @@ namespace net.yuleo21.prostheticarmconstraint.Editor.NDMF
             Animator animator = avatarRoot.GetComponent<Animator>();
             if (animator == null || animator.avatar == null)
             {
-                Debug.LogWarning("ProstheticArmConstraint: Animator component or Avatar is not set up on the avatar.");
+                Debug.LogWarning("NDMFProstheticArmConstraintSetter: Animator component or Avatar is not set up on the avatar.");
                 return;
             }
 
             // 同コンポーネント検索
-            ProstheticArmConstraint[] prostheticConstraints = avatarRoot.GetComponentsInChildren<ProstheticArmConstraint>();
+            NDMFProstheticArmConstraintSetter[] prostheticConstraints = avatarRoot.GetComponentsInChildren<NDMFProstheticArmConstraintSetter>();
 
-            foreach (ProstheticArmConstraint prostheticConstraint in prostheticConstraints)
+            foreach (NDMFProstheticArmConstraintSetter prostheticConstraint in prostheticConstraints)
             {
                 ProcessProstheticConstraint(prostheticConstraint, animator);
             }
         }
 
-        private void ProcessProstheticConstraint(ProstheticArmConstraint prostheticConstraint, Animator animator)
+        private void ProcessProstheticConstraint(NDMFProstheticArmConstraintSetter prostheticConstraint, Animator animator)
         {
             if (prostheticConstraint.ProstheticArmRoot == null)
             {
-                Debug.LogWarning($"ProstheticArmConstraint: Prosthetic arm root of {prostheticConstraint.gameObject.name} is not set.");
+                Debug.LogWarning($"NDMFProstheticArmConstraintSetter: Prosthetic arm root of {prostheticConstraint.gameObject.name} is not set.");
                 return;
             }
 
@@ -53,17 +53,17 @@ namespace net.yuleo21.prostheticarmconstraint.Editor.NDMF
             Transform avatarSourceRoot = animator.GetBoneTransform(prostheticConstraint.AvatarSourceRootBone);
             if (avatarSourceRoot == null)
             {
-                Debug.LogWarning($"ProstheticArmConstraint: Could not find {prostheticConstraint.AvatarSourceRootBone} bone on the avatar.");
+                Debug.LogWarning($"NDMFProstheticArmConstraintSetter: Could not find {prostheticConstraint.AvatarSourceRootBone} bone on the avatar.");
                 return;
             }
 
-            Debug.Log($"ProstheticArmConstraint: Using avatar's source root bone {prostheticConstraint.AvatarSourceRootBone}: {avatarSourceRoot.name}");
+            Debug.Log($"NDMFProstheticArmConstraintSetter: Using avatar's source root bone {prostheticConstraint.AvatarSourceRootBone}: {avatarSourceRoot.name}");
 
             foreach (var boneMapping in prostheticConstraint.BoneMappings)
             {
                 if (boneMapping.ProstheticBone == null)
                 {
-                    Debug.LogWarning("ProstheticArmConstraint: A bone mapping has an unset prosthetic bone.");
+                    Debug.LogWarning("NDMFProstheticArmConstraintSetter: A bone mapping has an unset prosthetic bone.");
                     continue;
                 }
 
@@ -71,13 +71,13 @@ namespace net.yuleo21.prostheticarmconstraint.Editor.NDMF
                 Transform avatarBone = animator.GetBoneTransform(boneMapping.AvatarBoneType);
                 if (avatarBone == null)
                 {
-                    Debug.LogWarning($"ProstheticArmConstraint: Could not find {boneMapping.AvatarBoneType} bone on the avatar.");
+                    Debug.LogWarning($"NDMFProstheticArmConstraintSetter: Could not find {boneMapping.AvatarBoneType} bone on the avatar.");
                     continue;
                 }
 
                 if (!IsDescendantOf(avatarBone, avatarSourceRoot))
                 {
-                    Debug.LogWarning($"ProstheticArmConstraint: Avatar bone {avatarBone.name} ({boneMapping.AvatarBoneType}) is not a descendant of the specified source root bone {avatarSourceRoot.name} ({prostheticConstraint.AvatarSourceRootBone}). Skipping.");
+                    Debug.LogWarning($"NDMFProstheticArmConstraintSetter: Avatar bone {avatarBone.name} ({boneMapping.AvatarBoneType}) is not a descendant of the specified source root bone {avatarSourceRoot.name} ({prostheticConstraint.AvatarSourceRootBone}). Skipping.");
                     continue;
                 }
 
@@ -100,7 +100,7 @@ namespace net.yuleo21.prostheticarmconstraint.Editor.NDMF
                 rotationConstraint.locked = true;
                 rotationConstraint.rotationOffset = boneMapping.RotationOffset;
 
-                Debug.Log($"ProstheticArmConstraint: Applied Rotation Constraint to {boneMapping.ProstheticBone.name} from {avatarBone.name} ({boneMapping.AvatarBoneType}). Offset: {boneMapping.RotationOffset}");
+                Debug.Log($"NDMFProstheticArmConstraintSetter: Applied Rotation Constraint to {boneMapping.ProstheticBone.name} from {avatarBone.name} ({boneMapping.AvatarBoneType}). Offset: {boneMapping.RotationOffset}");
             }
 
             // 元のコンポーネント削除

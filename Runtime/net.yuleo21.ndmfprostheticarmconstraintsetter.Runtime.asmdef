@@ -1,14 +1,8 @@
 {
-    "name": "net.yuleo21.prostheticarmconstraint.Editor",
+    "name": "net.yuleo21.ndmfprostheticarmconstraintsetter.Runtime",
     "rootNamespace": "",
-    "references": [
-        "nadena.dev.ndmf",
-        "net.yuleo21.prostheticarmconstraint.Runtime",
-		"VRC.SDK3A"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
